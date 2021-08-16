@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>日記</title>
+    <link rel="stylesheet" th:href="@{/dist/css/uikit-rtl.min.css}">
+      <link rel="stylesheet" th:href="@{/dist/css/uikit-core.min.css}">
+      <link rel="stylesheet" th:href="@{/css/calendar5.css}">
+  </head>
+  <body class="uk-background-image uk-background-cover uk-height-viewport" th:data-src="@{/images/sunflower.jpg}" uk-img>
+    <header>
+      <div class="uk-background-primary uk-flex uk-flex-around">
+        <span class="uk-text-large uk-text-bolder uk-display-inline uk-text-white">Calendar Diary</span>
+          <div class="uk-flex uk-flex-row uk-flex-middle">
+            <a class="uk-icon-button" uk-icon="icon: user"></a>
+            <span class="uk-margin-small-left uk-margin-right uk-text-white" th:text="${username}"></span>
+            <div class="uk-flex uk-flex-row uk-flex-middle">
+              <form th:action="@{/logout}" method="post">
+                <button type="submit" class="uk-button uk-button-text uk-text-white">
+                <a class="uk-icon-button uk-margin-small-right" style="color: #999 !important" uk-icon="icon: sign-out"></a>logout</button>
+              </form>
+            </div>
+          </div>
+      </div>
+    </header>
+    <div class="uk-container uk-flex uk-flex-center uk-text-center">
+      <form th:action="@{/diary/save}" method="post" th:object="${diaryForm}">
+        <h6 class="uk-text-white" th:text="${diaryForm.date}"></h6>
+        <input type="hidden" th:field="${diaryForm.date}">
+        <textarea class="uk-textarea" th:field="${diaryForm.text}" rows="20" cols="50"></textarea>
+        <div class="uk-flex uk-flex-right">
+          <button class="uk-button uk-button-primary" type="submit">保存</button>
+        </div>
+      </form>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/dist/js/uikit-core.min.js}"></script>
+    <script type="text/javascript" th:src="@{/dist/js/uikit-icons.js}"></script>
+  </body>
+</html>

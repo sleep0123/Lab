@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>カレンダー</title>
+    <link rel="stylesheet" th:href="@{/dist/css/uikit-rtl.min.css}">
+      <link rel="stylesheet" th:href="@{/dist/css/uikit-core.min.css}">
+      <link rel="stylesheet" th:href="@{/css/calendar5.css}">
+  </head>
+  <body class="uk-background-image uk-background-cover uk-height-viewport" th:data-src="@{/images/sunflower.jpg}" uk-img>
+    <header>
+      <div class="uk-background-primary uk-flex uk-flex-around">
+        <span class="uk-text-large uk-text-bolder uk-display-inline uk-text-white">Calendar Diary</span>
+          <div class="uk-flex uk-flex-row uk-flex-middle">
+            <a class="uk-icon-button" uk-icon="icon: user"></a>
+            <span class="uk-margin-small-left uk-margin-right uk-text-white" th:text="${username}"></span>
+            <div class="uk-flex uk-flex-row uk-flex-middle">
+              <form th:action="@{/logout}" method="post">
+                <button type="submit" class="uk-button uk-button-text uk-text-white">
+                <a class="uk-icon-button uk-margin-small-right" style="color: #999 !important" uk-icon="icon: sign-out"></a>logout</button>
+              </form>
+            </div>
+          </div>
+      </div>
+    </header>
+    
+    <form>
+      <div class="uk-container uk-flex uk-flex-center uk-flex-row uk-flex-middle uk-margin-bottom">
+        <div class="uk-text-center uk-overflow-auto uk-flex uk-flex-center">
+          <table class="calendar-small uk-table uk-text-white">
+            <thead class="calendar-header"></thead>
+            <tbody class="calendar-body" th:data-value="-1"></tbody>
+          </table>
+        </div>
+        
+        <div class="uk-flex uk-flex-column uk-margin-large-right uk-margin-large-left">
+          <div class="uk-flex uk-flex-between uk-margin-bottom">
+            <a id="previous" class="uk-icon-button" uk-icon="icon: triangle-left"></a>
+            <span id="monthYear" class="uk-text-large uk-text-bolder uk-text-white">monthYear</span>
+            <a id="next" class="uk-icon-button" uk-icon="icon: triangle-right"></a>
+          </div>
+          <div class="uk-flex uk-flex-middle uk-flex-between">
+            <span class="uk-text-white uk-text-nowrap" for="month">日付指定：</span>
+            <select id="selectedMonth" class="uk-select uk-form-width-small"></select>
+            <select id="selectedYear" class="uk-select uk-form-width-small"></select>
+          </div>
+        </div>
+        <div class="uk-text-center uk-overflow-auto uk-flex uk-flex-center">
+          <table class="uk-table calendar-small uk-text-white">
+            <thead class="calendar-header"></thead>
+            <tbody class="calendar-body" th:data-value="1"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="uk-container uk-overflow-auto uk-text-center uk-flex uk-flex-center uk-margin-auto">
+        <table class="uk-table uk-text-white">
+          <thead class="calendar-header"></thead>
+          <tbody class="calendar-body" th:data-value="0"></tbody>
+        </table>
+      </div>
+      <th:block th:each="dateOfMonth : ${datesOfMonth}">
+        <input class="recorded" type="hidden" th:value="${dateOfMonth}">
+      </th:block>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/dist/js/uikit-core.min.js}"></script>
+    <script type="text/javascript" th:src="@{/dist/js/uikit-icons.js}"></script>
+    <script type="text/javascript" th:src="@{/js/calendar5.js}"></script>
+  </body>
+</html>

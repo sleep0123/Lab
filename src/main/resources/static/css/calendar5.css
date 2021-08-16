@@ -1,0 +1,29 @@
+.calendar-small {
+  width: 10px;
+  height: 10px;
+}
+
+.calendar-small td {
+  padding: 0% !important;
+}
+
+.uk-table th {
+  text-align: center !important;
+}
+
+.uk-text-white {
+    color: white !important;
+}
+
+.uk-text-white th {
+  border-bottom: 3px solid aqua;
+  color: white !important;
+}
+
+.uk-text-white a {
+  color: white;
+}
+
+.uk-text-red a {
+    color: red !important;
+}
